@@ -1,0 +1,15 @@
+{
+    "name": "Tests",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilya Sinyakin",
+            "email": "sinyakin.ilya@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require" : {
+        "php" : ">=7.0",
+        "ext-mbstring": "*"
+    }
+}
