@@ -9,8 +9,6 @@ COPY . /var/www/project
 
 WORKDIR /var/www/project
 
-RUN cp .build/prod/nginx.conf /etc/nginx/sites-enabled/default\
- && cat .build/prod/cron_jobs >> /etc/crontab\
- && rm -rf var/cache/* && rm -rf var/logs/* && rm -rf var/sessions/*\
+RUN cp build/prod/nginx.conf /etc/nginx/sites-enabled/default\
  && composer install\
  && chmod -R 0777 /var/www/project/var
