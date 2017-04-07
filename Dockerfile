@@ -10,5 +10,4 @@ COPY . /var/www/project
 WORKDIR /var/www/project
 
 RUN cp build/prod/nginx.conf /etc/nginx/sites-enabled/default\
- && composer install\
- && chmod -R 0777 /var/www/project/var
+ && composer install
