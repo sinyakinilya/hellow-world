@@ -19,4 +19,6 @@ jobs:
       - checkout
       - run:
           name: "Install composer"
-          command: docker ps
+          command: |
+            docker ps
+            php -v
