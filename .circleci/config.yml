@@ -1,9 +1,9 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/project
+    working_directory: ~/circulate
     docker:
-      - image: php:7.1
+      - image: python:3.6.0
     steps:
-      - checkout:
+      - checkout
       - run: echo "hello world"
