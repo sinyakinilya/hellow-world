@@ -8,8 +8,10 @@
             "role": "Developer"
         }
     ],
-    "require" : {
-        "php" : ">=7.0",
-        "ext-mbstring": "*"
+    "autoload": {
+        "psr-4": { "": "./" }
+    },
+    "require": {
+        "phpunit/phpunit": "6.1.0"
     }
 }

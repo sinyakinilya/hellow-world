@@ -9,5 +9,5 @@ COPY . /var/www/project
 
 WORKDIR /var/www/project
 
-RUN cp build/prod/nginx.conf /etc/nginx/sites-enabled/default\
+RUN cp .build/prod/nginx.conf /etc/nginx/sites-enabled/default\
  && composer install
