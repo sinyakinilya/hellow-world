@@ -1,9 +1,9 @@
 version: 2
-  jobs:
-    build:
-      working_directory: ~/project
-        docker:
-          - image: php:7.1-fpm
-        steps:
-          - checkout:
-          - run: echo "hello world"
+jobs:
+  build:
+    working_directory: ~/project
+      docker:
+        - image: php:7.1-fpm
+      steps:
+        - checkout:
+        - run: echo "hello world"
