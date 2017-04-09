@@ -4,14 +4,14 @@ jobs:
     working_directory: ~/project
 
     docker:
-#      - image: php:7.1
+      - image: php:7.1
 
-#      - image: percona:5.7.17
-#        environment:
-#          MYSQL_ROOT_PASSWORD: admin
-#          MYSQL_DATABASE: hw
-#          MYSQL_USER: hwuser
-#          MYSQL_PASSWORD: hwpass
+      - image: percona:5.7.17
+        environment:
+          MYSQL_ROOT_PASSWORD: admin
+          MYSQL_DATABASE: hw
+          MYSQL_USER: hwuser
+          MYSQL_PASSWORD: hwpass
 
       - image: rabbitmq:3.6
 
@@ -22,5 +22,3 @@ jobs:
           command: |
             service --status-all
             php -v
-            sleep 7
-            mysql -V
