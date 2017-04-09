@@ -22,4 +22,5 @@ jobs:
           command: |
             service --status-all
             php -v
+            sleep 7
             mysql -V
