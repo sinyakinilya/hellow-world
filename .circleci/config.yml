@@ -13,7 +13,7 @@ jobs:
           MYSQL_USER: hwuser
           MYSQL_PASSWORD: hwpass
 
-      - image: rabbitmq:3.6
+      - image: rabbitmq
 
     steps:
       - checkout
