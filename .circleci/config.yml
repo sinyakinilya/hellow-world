@@ -24,6 +24,7 @@ jobs:
             php -v
             pwd
             php -r 'echo __DIR__;'
+            php -d zend_extension=/xdebug.so --version
 
 #      - run:
 #          name: "Install composer"
