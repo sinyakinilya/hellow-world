@@ -41,7 +41,7 @@ jobs:
             composer install
 
       - save_cache:
-          key: video-market-api-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+          key: video-market-api-{{ .Branch }}-{{ checksum "composer.json" }}
           paths:
             - "~/vendor"
             - "composer.lock"
