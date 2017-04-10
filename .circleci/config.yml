@@ -44,7 +44,7 @@ jobs:
           key: video-market-api-{{ .Branch }}-{{ checksum "composer.json" }}
           paths:
             - "~/vendor"
-            - "composer.lock"
+            - "~/composer.lock"
 
       - run:
           name: "start phpunit"
