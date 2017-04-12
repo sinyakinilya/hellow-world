@@ -6,25 +6,12 @@ jobs:
     docker:
       - image: composer
 
-      - image: percona:5.7.17
-        environment:
-          MYSQL_ROOT_PASSWORD: admin
-          MYSQL_DATABASE: hw
-          MYSQL_USER: hwuser
-          MYSQL_PASSWORD: hwpass
-
-      - image: rabbitmq:3.6
-
     steps:
       - checkout
       - run:
           name: "Check php version"
           command: |
-            php -i
-            php -v
             pwd
-            php -r 'echo __DIR__;'
-            php -d zend_extension=/xdebug.so --version
 
 #      - run:
 #          name: "Install composer"
@@ -33,20 +20,28 @@ jobs:
 #            php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 #            php composer-setup.php
 #            php -r "unlink('composer-setup.php');"
+
       - restore_cache:
           key: video-market-api-{{ .Branch }}-{{ checksum "composer.json" }}
 
+      - setup_remote_docker
+
       - run:
-          name: "Run composer"
+          name: "Install Docker client"
           command: |
-            composer install
+            set -x
+            VER="17.03.0-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
+            echo
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            mv /tmp/docker/* /usr/bin
+
+
+      - run: |
+          docker build -t sinyakinilya/hellpw-world:test .
 
       - save_cache:
           key: video-market-api-{{ .Branch }}-{{ checksum "composer.json" }}
           paths:
             - "~/vendor"
             - "~/composer.lock"
-
-      - run:
-          name: "start phpunit"
-          command: vendor/bin/phpunit -c phpunit.xml.dist
