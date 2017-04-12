@@ -4,14 +4,30 @@ jobs:
     working_directory: ~/dist
 
     docker:
-      - image: composer
+      - image: php:7.1
+
+      - image: percona:5.7
+        environment:
+          MYSQL_ROOT_PASSWORD: admin
+          MYSQL_DATABASE: hw
+          MYSQL_USER: hwuser
+          MYSQL_PASSWORD: hwpass
+
+      - image: rabbitmq:3.6
 
     steps:
+      - run: |
+          apt-get update && apt-get install -y zip unzip nginx git supervisor cron\
+            && docker-php-ext-install mysqli pdo pdo_mysql bcmath sockets\
+            && pecl install amqp\
+            && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
       - checkout
       - run:
           name: "Check php version"
           command: |
             pwd
+            php -v
 
 #      - run:
 #          name: "Install composer"
@@ -39,6 +55,10 @@ jobs:
 
       - run: |
           docker build -t sinyakinilya/hellpw-world:test .
+          docker run -d sinyakinilya/hellpw-world:test; sleep 3
+
+      - run: |
+          docker exec -it sinyakinilya/hellpw-world:test vendor/bin/phpunit
 
       - save_cache:
           key: video-market-api-{{ .Branch }}-{{ checksum "composer.json" }}
