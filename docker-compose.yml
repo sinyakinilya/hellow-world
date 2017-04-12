@@ -1,0 +1,30 @@
+version: "2"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sinyakinilya/hello-world
+    ports:
+      - "8080:80"
+    links:
+      - db
+      - rabbitmq
+  db:
+    image: percona:5.7.17
+    environment:
+      - MYSQL_ROOT_PASSWORD=rtD@eerb5#6*df
+      - MYSQL_DATABASE=videomarket
+      - MYSQL_USER=vm
+      - MYSQL_PASSWORD=wOaACGFL2eB{_6
+    volumes:
+      - mysqldata:/var/lib/mysql
+  rabbitmq:
+    image: rabbitmq:3.6
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
+    ports:
+      - "15672:15672"
+volumes:
+  mysqldata:
+  rabbitmqdata:
