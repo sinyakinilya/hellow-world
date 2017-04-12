@@ -35,7 +35,7 @@ jobs:
             set -x
             curl -V
             ls -la /usr/bin
-            /usr/bin/docker-compose
+            cat /usr/bin/docker-compose
 
             ls -la
             docker-compose up -d
