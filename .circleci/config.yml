@@ -19,9 +19,9 @@ jobs:
       - setup_remote_docker
 
       - run: |
-          docker-compose build
+          /usr/local/bin/docker-compose build
           set -x
-          docker-compose up -d
+          /usr/local/bin/docker-compose up -d
 
       - run: |
-          docker-compose ps
+          /usr/local/bin/docker-compose ps
