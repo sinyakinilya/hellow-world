@@ -34,7 +34,7 @@ jobs:
           command: |
             set -x
             ls -la /usr/bin
-            docker-compose build
+            /usr/bin/docker-compose build
             docker-compose up -d
 
       - run:
