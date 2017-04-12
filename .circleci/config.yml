@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - run: |
-          apt-get update && apt-get install -y zip unzip nginx git supervisor cron\
+          apt-get update && apt-get install -my zip unzip nginx git supervisor cron\
             && docker-php-ext-install mysqli pdo pdo_mysql bcmath sockets\
             && pecl install amqp\
             && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
