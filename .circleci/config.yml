@@ -31,8 +31,8 @@ jobs:
 
       - run: |
           set -x
-          /usr/local/bin/docker-compose build
-          /usr/local/bin/docker-compose up -d
+          docker-compose build
+          docker-compose up -d
 
       - run: |
-          /usr/local/bin/docker-compose ps
+          docker-compose ps
